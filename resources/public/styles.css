@@ -1,0 +1,18 @@
+.formControl, #demo-simple-select-outlined, #demo-simple-select-outlined-label, #food-type {
+    min-width: 120px;
+  }
+
+  #receipt-instructions {
+  min-height: 100px;
+}
+  .selectEmpty {
+    margin-top: 20px;
+  }
+
+  #submitbutton {
+      margin: 20px;
+  }
+
+  body, h1, div, p, button {
+      font-family: "Roboto", sans-serif;
+  }
