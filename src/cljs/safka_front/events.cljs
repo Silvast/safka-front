@@ -25,6 +25,11 @@
   (fn-traced [db [_ key-path new-value]]
     (assoc-in db [:add-receipt-data key-path] new-value)))
 
+(re-frame/reg-event-db
+  ::set-advanced-receipt-data
+  (fn-traced [db [_ new-value]]
+    (assoc-in db [:advanced-data] new-value)))
+
 
 (re-frame/reg-event-fx
   ::get-receipt
@@ -73,7 +78,9 @@
   (fn-traced [{:keys [db]} [_ wishes]]
     {:http-xhrio {:method          :post
                   :uri             (str receipt-url "/list")
-                  :body            wishes
+                  :body            (.stringify js/JSON (clj->js wishes))
+                  :request-content-type   :json
+                  :headers                {"Accept" "application/json", "Content-Type" "application/json"}
                   :response-format (json-response-format {:keywords? true})
                   :on-success      [:get-receipt-list-success]
                   :on-failure      [:api-request-error :get-receipt-list]}

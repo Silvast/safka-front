@@ -51,3 +51,18 @@
   ::add-receipt-response
   (fn [db]
    (get-in db [:add-receipt-response])))
+
+ (re-frame/reg-sub
+  ::get-advanced-receipt-data
+  (fn [db key-path]
+    (get-in db key-path)))
+
+ (re-frame/reg-sub
+  ::get-advanced-data-all
+  (fn [db]
+    (db :advanced-receipt-data)))
+
+(re-frame/reg-sub
+  ::receipt-list-response
+  (fn [db]
+   (get-in db [:receipt-list-response])))
