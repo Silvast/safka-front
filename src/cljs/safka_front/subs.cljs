@@ -54,13 +54,18 @@
 
  (re-frame/reg-sub
   ::get-advanced-receipt-data
-  (fn [db key-path]
-    (get-in db key-path)))
+  (fn [db n]
+    (get-in db [:advanced-data n :number])))
 
  (re-frame/reg-sub
   ::get-advanced-data-all
   (fn [db]
     (db :advanced-receipt-data)))
+
+ (re-frame/reg-sub
+  ::get-advanced-data
+  (fn [db]
+    (db :advanced-data)))
 
 (re-frame/reg-sub
   ::receipt-list-response

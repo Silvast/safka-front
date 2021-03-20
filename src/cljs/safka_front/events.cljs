@@ -8,7 +8,7 @@
    [day8.re-frame.tracing :refer-macros [fn-traced]]
    [safka-front.config :refer [conf]]))
 
-(def receipt-url "http://localhost:3000/api/receipts")
+(def receipt-url "http://localhost:3001/api/receipts")
 
 (re-frame/reg-event-db
  ::initialize-db
@@ -107,7 +107,7 @@
     {:http-xhrio {:method          :post
                   :header          "header 'Content-Type: application/json'"
                   :uri             (str receipt-url "/add-new")
-                  :body            (format-ingredients-data (:add-receipt-data (:db db)))
+                  :body            (format-ingredients-data (:add-receipt-data db))
                   :request-content-type   :json
                   :headers                {"Accept" "application/json", "Content-Type" "application/json"}
                   :response-format (json-response-format {:keywords? true})

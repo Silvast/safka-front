@@ -3,7 +3,7 @@
    [reagent.dom :as rdom]
    [re-frame.core :as re-frame]
    [safka-front.events :as events]
-   [safka-front.views :as views]
+   [safka-front.views.views :as views]
    [safka-front.config :as config]
    ))
 

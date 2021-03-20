@@ -13,6 +13,25 @@
       margin: 20px;
   }
 
+  .card {
+    max-width: 400px;
+    margin: 2% 0;
+    box-shadow: 10px 10px 3px -2px rgba(204,204,204,0.41);
+  }
+
+  .card-content {
+    padding: 2%;
+  }
+
   body, h1, div, p, button {
       font-family: "Roboto", sans-serif;
+  }
+
+  .panel-content {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  #insert-form > p > .MuiFormControl-root {
+  min-width: 50% !important;
   }
