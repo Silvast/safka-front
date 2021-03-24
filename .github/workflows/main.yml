@@ -29,5 +29,5 @@ jobs:
         path: public/
         remote_path: /var/www/html/
         remote_host: ${{ secrets.DEPLOY_HOST }}
-        remote_user: debian
+        remote_user: ubuntu
         remote_key: ${{ secrets.DEPLOY_KEY }}
