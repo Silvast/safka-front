@@ -16,6 +16,7 @@
 
 (defn advanced-panel []
 (let [list-response (re-frame/subscribe [::subs/receipt-list-response])]
+  [:div {:class-name "panel-content"}
 (if (some? @list-response)
  [:div
   [:h2 "Tässä ruokalistasi!"]
@@ -44,4 +45,4 @@
    [components/select-component "PERUSRUOKA" 4 "perusruoka"]
    [components/select-component "PASTA" 5 "pasta"]]
   [:p {:id "button"}
-    [button {:variant "contained" :color "secondary" :on-click #(re-frame/dispatch [::events/get-receipt-list @(re-frame/subscribe [::subs/get-advanced-data])])} "Hae ruokalista"]]]])))
+    [button {:variant "contained" :color "secondary" :on-click #(re-frame/dispatch [::events/get-receipt-list @(re-frame/subscribe [::subs/get-advanced-data])])} "Hae ruokalista"]]]])]))

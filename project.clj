@@ -5,10 +5,10 @@
                                org.clojure/google-closure-library
                                org.clojure/google-closure-library-third-party]]
                  [thheller/shadow-cljs "2.11.7"]
-                 [reagent "0.10.0"]
-                 [re-frame "1.1.2"]
+                 [reagent "1.0.0"]
+                 [re-frame "1.2.0"]
                  [day8.re-frame/tracing "0.6.0"]
-                 [arttuka/reagent-material-ui "4.11.2-0"]
+                 [arttuka/reagent-material-ui "4.11.3-1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server arttuka/reagent-material-ui-js]]
                  [day8.re-frame/http-fx "v0.2.0"]
                  [cljs-ajax "0.7.3"]]
 
@@ -74,7 +74,7 @@
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "1.0.2"]
-                   [day8.re-frame/re-frame-10x "0.7.0"]
+                   [day8.re-frame/re-frame-10x "1.0.2"]
                    [day8.re-frame/tracing "0.5.3"]
                    [day8.re-frame/http-fx "v0.2.0"]
                    [cljs-ajax "0.7.3"]

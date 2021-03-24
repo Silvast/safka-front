@@ -1,15 +1,33 @@
 {
-	"name": "safka-front",
-	"dependencies": {
-		"@material-ui/core": "4.11.2",
-		"@material-ui/lab": "4.0.0-alpha.57",
-		"@material-ui/pickers": "3.2.10",
-		"highlight.js": "9.18.1",
-		"react": "16.14.0",
-		"react-dom": "16.14.0",
-		"react-highlight.js": "1.0.7"
-	},
-	"devDependencies": {
-		"shadow-cljs": "2.11.7"
-	}
+  "name": "safka-front",
+  "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "@material-ui/lab": "4.0.0-alpha.57",
+    "@material-ui/pickers": "3.2.10",
+    "create-react-class": "^15.7.0",
+    "highlight.js": "10.7.1",
+    "react": "17.0.1",
+    "react-dom": "^17.0.1",
+    "react-highlight.js": "1.0.7"
+  },
+  "devDependencies": {
+    "shadow-cljs": "2.11.7"
+  },
+  "description": "A [re-frame](https://github.com/day8/re-frame) application designed to ... well, that part is up to you.",
+  "version": "1.0.0",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silvast/safka-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Silvast/safka-front/issues"
+  },
+  "homepage": "https://github.com/Silvast/safka-front#readme"
 }
