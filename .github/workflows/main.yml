@@ -28,8 +28,8 @@ jobs:
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete --include='./resources/*/*'
-        path: ./resources/public
+        switches: -avzr --delete
+        path: ./resources/public/js/compiled
         remote_path: /var/www/html/
         remote_host: ${{ secrets.DEPLOY_HOST }}
         remote_user: ubuntu
