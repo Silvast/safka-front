@@ -13,21 +13,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install deps
+      run: lein deps
     - name: build release
       run: lein release
+    - uses: actions/upload-artifact@v2
+      with:
+        name: public
+        path: ./resources/public/
       
   deploy:
     
     runs-on: ubuntu-latest
+    needs: build
     
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v2
+      with:
+        name: public
+        path: dist/
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: dist/
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.1
       with:
         switches: -avzr --delete
-        path: public/
+        path: dist/
         remote_path: /var/www/html/
         remote_host: ${{ secrets.DEPLOY_HOST }}
-        remote_user: debian
+        remote_user: ubuntu
         remote_key: ${{ secrets.DEPLOY_KEY }}
