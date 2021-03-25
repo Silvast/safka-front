@@ -8,7 +8,8 @@
    [day8.re-frame.tracing :refer-macros [fn-traced]]
    [safka-front.config :refer [conf]]))
 
-(def receipt-url "http://localhost:3001/api/receipts")
+(def host (.. js/window -location -host))
+(def receipt-url (str host "/api/receipts"))
 
 (re-frame/reg-event-db
  ::initialize-db
