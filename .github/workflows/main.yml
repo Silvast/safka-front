@@ -17,6 +17,10 @@ jobs:
       run: lein deps
     - name: build release
       run: lein release
+    - uses: actions/upload-artifact@v2
+      with:
+        name: static-files
+        path: ./resources/public
       
   deploy:
     
@@ -25,11 +29,16 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v2
+      with:
+        name: static-files    
+    - name: Display structure of downloaded files
+      run: ls -R
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.1
       with:
         switches: -avzr --delete
-        path: ./resources/public/js/compiled
+        path: static-files
         remote_path: /var/www/html/
         remote_host: ${{ secrets.DEPLOY_HOST }}
         remote_user: ubuntu
