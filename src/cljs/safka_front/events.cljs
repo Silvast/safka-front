@@ -8,8 +8,8 @@
    [day8.re-frame.tracing :refer-macros [fn-traced]]))
 
 (def host (.. js/window -location -host))
-(def receipt-url (str host "/api/receipts"))
-
+;;(def receipt-url (str host "/api/receipts"))
+(def receipt-url "http://95.217.130.103/api/receipts")
 (defonce log (.log js/console receipt-url))
 
 (re-frame/reg-event-db
