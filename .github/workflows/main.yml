@@ -20,7 +20,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: public
-        path: public/
+        path: ./resources/public/
       
   deploy:
     
@@ -35,7 +35,7 @@ jobs:
         path: dist/
     - name: Display structure of downloaded files
       run: ls -R
-      working-directory: public/
+      working-directory: dist/
     - name: rsync deployments
       uses: burnett01/rsync-deployments@4.1
       with:
