@@ -5,11 +5,12 @@
    [safka-front.db :as db]
    [day8.re-frame.http-fx]  
    [ajax.core :refer [json-request-format json-response-format]]
-   [day8.re-frame.tracing :refer-macros [fn-traced]]
-   [safka-front.config :refer [conf]]))
+   [day8.re-frame.tracing :refer-macros [fn-traced]]))
 
 (def host (.. js/window -location -host))
 (def receipt-url (str host "/api/receipts"))
+
+(defonce log (.log js/console receipt-url))
 
 (re-frame/reg-event-db
  ::initialize-db
