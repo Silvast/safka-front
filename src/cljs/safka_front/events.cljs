@@ -9,7 +9,8 @@
 
 (def host (.. js/window -location -host))
 ;;(def receipt-url (str host "/api/receipts"))
-(def receipt-url "/api/receipts")
+;;(def receipt-url "/api/receipts")
+(def receipt-url "http://localhost:3000/api/receipts")
 (defonce log (.log js/console receipt-url))
 
 (re-frame/reg-event-db
@@ -33,11 +34,17 @@
     (assoc-in db [:advanced-data] new-value)))
 
 
+(re-frame/reg-event-db
+  ::set-advanced-receipt-data-value
+  (fn-traced [db [_ n new-value]]
+    (assoc-in db [:advanced-data n :number] new-value)))
+
 (re-frame/reg-event-fx
   ::get-receipt
   (fn-traced [{:keys [db]} [_ number]]
     {:http-xhrio {:method          :get
                   :uri             (str receipt-url "/random?number=" number )
+                  :headers                {"Accept" "application/json", "Content-Type" "application/json"}
                   :response-format (json-response-format {:keywords? true})
                   :on-success      [:get-receipt-success]
                   :on-failure      [:api-request-error :get-receipt]}
@@ -132,3 +139,26 @@
             (dissoc :add-receipt-response)
             (dissoc :add-receipt-data)
             (dissoc :loading))))
+
+(re-frame/reg-event-fx
+  ::get-search-result
+  (fn-traced [{:keys [db]} [_ name]]
+    {:http-xhrio {:method          :get
+                  :uri             (str receipt-url "/search?name=" name )
+                  :headers                {"Accept" "application/json", "Content-Type" "application/json"}
+                  :response-format (json-response-format {:keywords? true})
+                  :on-success      [:get-search-success]
+                  :on-failure      [:api-request-error :get-search-result]}
+      :db         (assoc-in db [:loading :search-result] true)}))
+
+(re-frame/reg-event-db
+  :get-search-success
+  (fn-traced [db [_ result]]
+        (-> db
+            (assoc-in [:loading :search-result] false)
+            (assoc :search-result result))))
+
+(re-frame/reg-event-db
+  ::set-search-name
+  (fn-traced [db [_ name]]
+    (assoc db :search-name name)))

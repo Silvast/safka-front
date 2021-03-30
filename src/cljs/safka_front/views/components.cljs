@@ -30,7 +30,7 @@
                             {:food-type  "pasta" :number 0}]))
 
 (defn select-component [label n food-type]
-  (let [dropdown-value (re-frame/subscribe [::subs/get-advanced-receipt-data n])]
+  (let [dropdown-value (re-frame/subscribe [::subs/get-add-receipt-data n])]
   [:div
    [:p
     [form-control {:variant "outlined" :class-name "form-control"}
@@ -39,9 +39,25 @@
       {:label-id "demo-simple-select-outlined-label"
        :id "demo-simple-select-outlined"
        :label food-type
-       :value (get-in @advanced-data [n :number])
+       :value @(re-frame/subscribe [::subs/get-add-receipt-data n])
        :on-change (fn [e]
-                      (swap! advanced-data assoc n {:food-type food-type :number (event-value e)})
-                       (re-frame/dispatch [::events/set-advanced-receipt-data @advanced-data]))}
+                       (re-frame/dispatch [::events/set-advanced-receipt-data-value n (event-value e)]))}
       (map (fn [item]
              [menu-item {:value item} (str item)]) (range 0 7))]]]]))
+
+
+
+(defn show-ingredients [receipt-list]
+[:div 
+  [:h2 "Ostoslista"]
+  [:p (map (fn [item] 
+              [:div {:key (inc (.indexOf receipt-list item))} 
+                [:p item]]) receipt-list)]])
+
+  (defn show-receipts [data]
+  [:div 
+    [:div (map (fn [item]
+                [card-box 
+                [:div [:h2 (:name item)]
+                    [:p (:instructions item)]
+                    [show-ingredients (:ingredients item)]] (:id item)]) data)]])

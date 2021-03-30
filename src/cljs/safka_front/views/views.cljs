@@ -7,6 +7,7 @@
    [safka-front.views.getpanel :as getpanel]
    [safka-front.views.advancedpanel :as advancedpanel]
    [safka-front.views.insertpanel :as insertpanel]
+   [safka-front.views.searchpanel :as searchpanel]
    [reagent-material-ui.colors :as colors]
    [reagent-material-ui.core.grid :refer [grid]]
    [reagent-material-ui.core.app-bar :refer [app-bar]]
@@ -31,6 +32,7 @@
                (= @active-tab :get-tab) 0
                (= @active-tab :advanced-panel) 1
                (= @active-tab :insert-tab) 2
+               (= @active-tab :search-panel) 3
                )}
             [tab
              {:label "Hae"
@@ -44,11 +46,16 @@
             [tab
              {:label "Syötä resepti"
               :on-click #(re-frame/dispatch [::events/set-active-tab :insert-tab])
+              :wrapped true}]
+            [tab
+             {:label "Etsi resepti"
+              :on-click #(re-frame/dispatch [::events/set-active-tab :search-panel])
               :wrapped true}]]]
           (condp = @active-tab
             :get-tab [getpanel/get-panel]
             :advanced-panel [advancedpanel/advanced-panel]
-            :insert-tab [insertpanel/insert-panel])]))
+            :insert-tab [insertpanel/insert-panel]
+            :search-panel [searchpanel/search-panel])]))
 
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]

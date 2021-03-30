@@ -17,6 +17,11 @@
  (fn [db key-path]
    (get-in db [:add-receipt-data key-path]))) 
 
+(re-frame/reg-sub
+  ::get-add-receipt-data
+  (fn [db [_ n]]
+    (get-in db [:advanced-data n :number]))) 
+
  (re-frame/reg-sub
  ::get-foodtype
  (fn [db]
@@ -71,3 +76,13 @@
   ::receipt-list-response
   (fn [db]
    (get-in db [:receipt-list-response])))
+
+(re-frame/reg-sub
+  ::get-search-result
+  (fn [db]
+    (db :search-result)))
+
+(re-frame/reg-sub
+  ::get-search-name
+  (fn [db]
+    (db :search-name)))

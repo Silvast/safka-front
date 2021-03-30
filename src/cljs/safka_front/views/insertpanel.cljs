@@ -76,7 +76,7 @@
        [menu-item
         {:value "vleines"} "Viikonlopun lounaseines"]
        [menu-item
-        {:value "Uuniruoka"} "Uuniruoka"]
+        {:value "Salaatti"} "Salaatti"]
        [menu-item
         {:value "Keitto"} "Keitto"]
        [menu-item

@@ -7,6 +7,7 @@
    [safka-front.events :as events]
    [safka-front.views.components :as components]
    [reagent-material-ui.core.card :refer [card]]
+   [reagent-material-ui.core.grid :refer [grid]]
    [reagent-material-ui.core.button :refer [button]]))
 
 
