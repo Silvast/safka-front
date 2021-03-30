@@ -18,7 +18,7 @@
 (defn get-receipt-url []
   (if config/debug?
     "http://localhost:3000/api/receipts"
-     "/api/receipt"
+     "/api/receipts"
     ))
 
   (def receipt-url (get-receipt-url))
