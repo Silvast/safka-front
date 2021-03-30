@@ -9,8 +9,8 @@
 
 (def host (.. js/window -location -host))
 ;;(def receipt-url (str host "/api/receipts"))
-;;(def receipt-url "/api/receipts")
-(def receipt-url "http://localhost:3000/api/receipts")
+(def receipt-url "/api/receipts")
+;; (def receipt-url "http://localhost:3000/api/receipts")
 (defonce log (.log js/console receipt-url))
 
 (re-frame/reg-event-db
