@@ -44,6 +44,7 @@
    [components/select-component "UUNIRUOKA" 2 "uuniruoka"]
    [components/select-component "KEITTO" 3 "keitto"]
    [components/select-component "PERUSRUOKA" 4 "perusruoka"]
-   [components/select-component "PASTA" 5 "pasta"]]
+   [components/select-component "PASTA" 5 "pasta"]
+   [components/select-component "SALAATTI" 6 "salaatti"]]
   [:p {:id "button"}
     [button {:variant "contained" :color "secondary" :on-click #(re-frame/dispatch [::events/get-receipt-list @(re-frame/subscribe [::subs/get-advanced-data])])} "Hae ruokalista"]]]])]))

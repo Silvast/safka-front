@@ -8,4 +8,5 @@
                     {:food-type  "uuniruoka" :number 0}
                     {:food-type  "keitto" :number 0}
                     {:food-type  "perusruoka" :number 0}
-                    {:food-type  "pasta" :number 0}]})
+                    {:food-type  "pasta" :number 0}
+                    {:food-type  "salaatti" :number 0}]})

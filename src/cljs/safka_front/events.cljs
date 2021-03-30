@@ -2,16 +2,26 @@
   (:require
    [re-frame.core :as re-frame]
    [reagent.core :as r]
+   [safka-front.config :as config]
    [safka-front.db :as db]
    [day8.re-frame.http-fx]  
    [ajax.core :refer [json-request-format json-response-format]]
    [day8.re-frame.tracing :refer-macros [fn-traced]]))
 
-(def host (.. js/window -location -host))
-;;(def receipt-url (str host "/api/receipts"))
-(def receipt-url "/api/receipts")
+;; (def host (.. js/window -location -host))
+;; ;;(def receipt-url (str host "/api/receipts"))
+;; (def receipt-url "/api/receipts")
 ;; (def receipt-url "http://localhost:3000/api/receipts")
-(defonce log (.log js/console receipt-url))
+;; (defonce log (.log js/console receipt-url))
+
+
+(defn get-receipt-url []
+  (if config/debug?
+    "http://localhost:3000/api/receipts"
+     "/api/receipt"
+    ))
+
+  (def receipt-url (get-receipt-url))
 
 (re-frame/reg-event-db
  ::initialize-db
