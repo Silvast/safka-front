@@ -35,7 +35,7 @@
   [:div
    [:h2 "Reseptin lisääminen onnistui!"]
    [:div {:id "submitbutton"}
-    [button {:variant "contained" :color "secondary" :on-click #(do (re-frame/dispatch [::events/initialize-db]) (re-frame/dispatch [::events/set-active-tab :insert-tab]))} "Siirry lisäämään uusi resepti"]]]
+    [button {:variant "contained" :color "secondary" :on-click #(do (re-frame/dispatch [::events/initialize-db]) (re-frame/dispatch [::events/set-active-tab :insert-panel]))} "Siirry lisäämään uusi resepti"]]]
   [:div {:role "tabpanel"}
    [:div {:class-name "panel-content"}
     [:h2 "Syötä uusi resepti"]

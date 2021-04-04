@@ -12,6 +12,16 @@
  (fn [db _]
    (:active-tab db)))
 
+(re-frame/reg-sub
+  ::navigation-mode
+    (fn [db _]
+      (:navigation-mode db)))
+
+(re-frame/reg-sub
+  ::drawer-state
+  (fn [db _]
+    (:drawer-open db)))
+
  (re-frame/reg-sub
  ::add-receipt-data
  (fn [db key-path]

@@ -29,9 +29,29 @@
    db/default-db))
 
 (re-frame/reg-event-db
+  ::set-navigation-mode-mobile
+  (fn-traced [db]
+    (assoc db :navigation-mode :mobile)))
+
+(re-frame/reg-event-db
+  ::set-navigation-mode-desktop
+  (fn-traced [db]
+    (assoc db :navigation-mode :desktop)))  
+
+(re-frame/reg-event-db
   ::set-active-tab
   (fn-traced [db [_ active-tab]]
     (assoc db :active-tab active-tab)))
+
+(re-frame/reg-event-db
+  ::set-drawer-open
+  (fn-traced [db]
+    (assoc db :drawer-open true)))
+
+(re-frame/reg-event-db
+  ::set-drawer-closed
+  (fn-traced [db]
+    (assoc db :drawer-open false)))
 
 (re-frame/reg-event-db
   ::set-add-receipt-data

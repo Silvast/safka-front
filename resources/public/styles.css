@@ -2,6 +2,14 @@
     min-width: 120px;
   }
 
+  .root {
+    flex-grow: 1;
+  }
+
+  .title {
+    flex-grow: 1;
+  }
+
   #receipt-instructions {
   min-height: 100px;
 }
