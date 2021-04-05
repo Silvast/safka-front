@@ -43,3 +43,18 @@
   #insert-form > p > .MuiFormControl-root {
   min-width: 50% !important;
   }
+
+  @media only screen and (max-width: 1000px) {
+    #insert-form > p > .MuiFormControl-root {
+      min-width: 80% !important;
+      }
+    
+   .root, .MuiGrid-root { 
+     min-width: 80%;
+   }
+   
+   .panel-content {
+     min-width: 90%;
+   }
+   
+  }

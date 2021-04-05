@@ -117,6 +117,6 @@
          :justify "center"}
         [grid
          {:item true
-          :xs 8}
+          :xs 11}
          [:h1 ""]
          [resepti-panel]]]]]))
