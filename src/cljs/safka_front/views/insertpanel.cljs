@@ -82,6 +82,8 @@
        [menu-item
         {:value "Pasta"} "Pasta"]
        [menu-item
-        {:value "Uuniruoka"} "Uuniruoka"]]]]
+        {:value "Uuniruoka"} "Uuniruoka"]
+        [menu-item
+        {:value "Perusruoka"} "Perusruoka"]]]]
    [:p {:id "button"}
     [button {:variant "contained" :color "secondary" :on-click #(re-frame/dispatch [::events/post-receipt])} "Luo uusi resepti"]]]]])))
