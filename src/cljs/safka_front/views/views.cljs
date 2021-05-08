@@ -68,7 +68,7 @@
     (cond 
     (= new-value 0) (re-frame/dispatch [::events/set-active-tab :get-panel])
     (= new-value 1) (re-frame/dispatch [::events/set-active-tab :advanced-panel])
-    (= new-value 2) (re-frame/dispatch [::events/set-active-tab :advanced-panel])
+    (= new-value 2) (re-frame/dispatch [::events/set-active-tab :insert-panel])
     (= new-value 3) (re-frame/dispatch [::events/set-active-tab :search-panel])))
 
 (defn event-value
