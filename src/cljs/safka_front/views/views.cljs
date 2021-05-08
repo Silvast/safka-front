@@ -22,8 +22,8 @@
 
 (def custom-theme
   {
-   :palette {:primary  {:main "#11cb5f"}
-             :secondary {:main "#11cb5f"}}
+   :palette {:primary  {:main "#64FFDA"}
+             :secondary {:main "#7C4DFF"}}
    :typography {:font-family "Roboto" :font-size "14"}})
 
 (defn get-mobile-mode []
@@ -42,7 +42,7 @@
   {:color "inherit"
   :aria-label "Open drawer"
   :on-click #(re-frame/dispatch [::events/set-drawer-open])
-  :edge "start"
+  :edge "end"
   :class-name "menu-button"} 
   [menu]]
   [:nav 
@@ -60,33 +60,46 @@
       {:on-click #(navigate :search-panel)} "Etsi resepti"]
       ]]]))
  
- (defn desktop-navigation []
-  (let [active-tab (re-frame/subscribe [::subs/active-tab])]
-    [tabs
-    {:value 
+(defonce tab-state (r/atom 0))
+
+(defn handle-change [new-value]
+  (.log js/console new-value)
+  (reset! tab-state new-value)
     (cond 
-      (= @active-tab :get-tab) 0
-      (= @active-tab :advanced-panel) 1
-      (= @active-tab :insert-tab) 2
-      (= @active-tab :search-panel) 3
-      )}
+    (= new-value 0) (re-frame/dispatch [::events/set-active-tab :get-panel])
+    (= new-value 1) (re-frame/dispatch [::events/set-active-tab :advanced-panel])
+    (= new-value 2) (re-frame/dispatch [::events/set-active-tab :advanced-panel])
+    (= new-value 3) (re-frame/dispatch [::events/set-active-tab :search-panel])))
+
+(defn event-value
+  [^js/Event e]
+  (.log js/console e)
+  (.. e -target -value))
+
+
+
+ (defn desktop-navigation []
+  (let [active-tab (re-frame/subscribe [::subs/active-tab])
+        value @tab-state]
+    [tabs
+    {:value @tab-state
+     :indicator-color "secondary"}
     [tab
     {:label "Hae"
-      :on-click #(re-frame/dispatch [::events/set-active-tab :get-panel])
-      :wrapped true
-      :class-name "title"
-      }]
+     :on-click #(handle-change 0)
+       :wrapped true}]
     [tab
     {:label "Listahaku"
-      :on-click #(re-frame/dispatch [::events/set-active-tab :advanced-panel])
+      :on-click #(handle-change 1)
+      :index 1
       :wrapped true}]
     [tab
     {:label "Syötä resepti"
-      :on-click #(re-frame/dispatch [::events/set-active-tab :insert-panel])
+     :on-click #(handle-change 2)
       :wrapped true}]
     [tab
     {:label "Etsi resepti"
-      :on-click #(re-frame/dispatch [::events/set-active-tab :search-panel])
+     :on-click #(handle-change 3)
       :wrapped true}]]))
 
 (defn resepti-panel []
@@ -94,10 +107,12 @@
          drawer-open (re-frame/subscribe [::subs/drawer-state])
          mode (get-mobile-mode)
          navigation-mode (re-frame/subscribe [::subs/navigation-mode])]
+        
          [:div {:class-name "root"}
+         [:nav
           [app-bar
            {:position "static"}
-          [toolbar
+          ;; [toolbar
            (if (= @navigation-mode :mobile)
             (mobile-navigation)
             (desktop-navigation))]]
@@ -117,6 +132,5 @@
          :justify "center"}
         [grid
          {:item true
-          :xs 11}
-         [:h1 ""]
+          :xs 10}
          [resepti-panel]]]]]))

@@ -35,6 +35,10 @@
       font-family: "Roboto", sans-serif;
   }
 
+  body {
+    background-color: #f2f2f2;
+  }
+
   .panel-content {
     padding-left: 10%;
     padding-right: 10%;
