@@ -1,7 +1,12 @@
 # safka-front
 
-A [re-frame](https://github.com/day8/re-frame) application designed to ... well, that part is up to
-you.
+This is the front-end code for my menu-creating application written with ClojureScript (Re-Frame) and Clojure. Backend code can be found [here](https://github.com/Silvast/safkalista)
+
+![Screenshot of the app](https://anskufail.wordpress.com/wp-content/uploads/2021/03/screenshot-2021-03-20-at-12.33.14.png)
+![Screenshot of the app](https://anskufail.wordpress.com/wp-content/uploads/2021/03/screenshot-2021-03-20-at-12.30.39.png)
+
+![Screenshot of the app](https://anskufail.wordpress.com/wp-content/uploads/2021/03/screenshot-2021-03-20-at-12.33.03.png)
+
 
 ## Getting Started
 
